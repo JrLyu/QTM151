@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Assignment 2</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Assignment 2_Jiuru Lyu</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14602,7 +14602,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><font size = "5">
-Print your name:</p>
+Print your name below</p>
 
 </div>
 </div>
@@ -14732,10 +14732,13 @@ Print your name:</p>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create a list, e.g. &quot;variable_names = [ &quot;name1&quot;, &quot;name2&quot;, &quot;name3&quot; ]&quot;</span>
-<span class="c1"># Manually type the names of the 5 variables</span>
+<span class="c1"># Manually type the names of the 4 variables</span>
+<span class="c1"># If you&#39;re viewing the dataset from the VS-Code &quot;Variables&quot; tool, you&#39;ll</span>
+<span class="c1"># see an extra column &quot;index&quot;. Do not include this in your list.</span>
+
 <span class="n">wdi</span>
 
-<span class="n">variable_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;index&quot;</span><span class="p">,</span> <span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="s2">&quot;country_name&quot;</span><span class="p">,</span> <span class="s2">&quot;life_expectancy&quot;</span><span class="p">,</span> <span class="s2">&quot;gdp_per_capita_usd&quot;</span><span class="p">]</span>
+<span class="n">variable_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="s2">&quot;country_name&quot;</span><span class="p">,</span> <span class="s2">&quot;life_expectancy&quot;</span><span class="p">,</span> <span class="s2">&quot;gdp_per_capita_usd&quot;</span><span class="p">]</span>
 </pre></div>
 
      </div>
@@ -14751,14 +14754,15 @@ Print your name:</p>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><font size = "5"></p>
-<p>(d) Compute descriptive statistics for the fifth variable in the dataset</p>
+<p>(d) Compute descriptive statistics for the fourth variable in the dataset</p>
 <p><font size = "3"></p>
 <ul>
 <li>One way to do this is:</li>
 </ul>
 <p>wdi["gdp_per_capita_usd"].describe()</p>
 <ul>
-<li>Do something similar, but substitute "gdp_per_capita_usd" with a command that automatically extracts the fifth element in the list</li>
+<li>Do something similar, but with the list you created above.</li>
+<li>Substitute "gdp_per_capita_usd" with a command that automatically extracts the fourth element in the list</li>
 </ul>
 
 </div>
@@ -14777,7 +14781,8 @@ Print your name:</p>
 <span class="c1"># list_colors = [&quot;red&quot;,&quot;green&quot;,&quot;yellow&quot;]</span>
 <span class="c1"># list_colors[2] will output &quot;yellow&quot;</span>
 
-<span class="n">wdi</span><span class="p">[</span><span class="n">variable_names</span><span class="p">[</span><span class="mi">4</span><span class="p">]]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+
+<span class="n">wdi</span><span class="p">[</span><span class="n">variable_names</span><span class="p">[</span><span class="mi">3</span><span class="p">]]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 
      </div>
