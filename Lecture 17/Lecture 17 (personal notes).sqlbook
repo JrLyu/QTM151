@@ -98,9 +98,13 @@ Try it yourself!
 -- Add your name/nationality and your neighbors'
 -- Select a new driver id (needs to be unique)
 -- Make sure to deparate arguments by a semicolon!
+-- Use '' instead of "" when referring to a text string.
+-- Everything in the "" will be considered as a column name.
 
 
-INSERT VALUE 
+INSERT INTO drivers VALUES(5, 'Daniel Hayden', 'Italian', 72);
+
+INSERT INTO drivers VALUES(6, 'Sung Mingwu', 'Korean', 69);
 
 -- SQLBook: Markup
 # <span style="color:darkblue"> II. Dataset Operations </span>
@@ -113,7 +117,7 @@ Extracting columns from table
 -- SELECT extracts certain COLUMNS
 -- FROM is used to indicate the source table
 
-SELECT driver_id nationality FROM drivers;
+SELECT driver_id, nationality FROM drivers;
 -- SQLBook: Markup
 <font size="5"> 
 
@@ -188,10 +192,8 @@ with more than 60 victories
 -- SQLBook: Code
 -- Write your own code!
 
-
-
-
-
+SELECT nationality, driver_id FROM drivers
+WHERE victories >= 60;
 -- SQLBook: Markup
 # <span style="color:darkblue"> III. Groupby + Chaining </span>
 
