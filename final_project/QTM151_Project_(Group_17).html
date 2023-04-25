@@ -36,6 +36,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 .highlight .m { color: var(--jp-mirror-editor-number-color) } /* Literal.Number */
 .highlight .s { color: var(--jp-mirror-editor-string-color) } /* Literal.String */
 .highlight .ow { color: var(--jp-mirror-editor-operator-color); font-weight: bold } /* Operator.Word */
+.highlight .pm { color: var(--jp-mirror-editor-punctuation-color) } /* Punctuation.Marker */
 .highlight .w { color: var(--jp-mirror-editor-variable-color) } /* Text.Whitespace */
 .highlight .mb { color: var(--jp-mirror-editor-number-color) } /* Literal.Number.Bin */
 .highlight .mf { color: var(--jp-mirror-editor-number-color) } /* Literal.Number.Float */
@@ -14483,10 +14484,6 @@ a.anchor-link {
   display: none;
 }
 
-.highlight  {
-  margin: 0.4em;
-}
-
 /* Input area styling */
 .jp-InputArea {
   overflow: hidden;
@@ -14496,9 +14493,26 @@ a.anchor-link {
   overflow: hidden;
 }
 
-.CodeMirror pre {
+.CodeMirror.cm-s-jupyter .highlight pre {
+/* weird, but --jp-code-padding defined to be 5px but 4px horizontal padding is hardcoded for pre.CodeMirror-line */
+  padding: var(--jp-code-padding) 4px;
   margin: 0;
-  padding: 0;
+
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+
+}
+
+.jp-OutputArea-output pre {
+  line-height: inherit;
+  font-family: inherit;
+}
+
+.jp-RenderedText pre {
+  color: var(--jp-content-font-color1);
+  font-size: var(--jp-code-font-size);
 }
 
 /* Using table instead of flexbox so that we can use break-inside property */
@@ -14542,6 +14556,10 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 /* Hiding the collapser by default */
 .jp-Collapser {
   display: none;
+}
+
+@page {
+    margin: 0.5in; /* Margin for each printed piece of paper */
 }
 
 @media print {
@@ -14598,9 +14616,11 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<center><img src="figures/F1.svg.png" width = "300" height = "100" alt="Formula One Logo" align=center/></center><h1><font face="times"><font color="darkred"><center><b>QTM 151 Group Project: <br> Exploration of Countries' Performance as Drivers and Constructors in Formula One</b></center></font></h1>
+<center><img src="https://github.com/JrLyu/QTM151/blob/main/final_project/figures/F1.svg.png?raw=true" width = "300" height = "100" alt="Formula One Logo" align=center/></center>
+<h1><font face="times"><font color="darkred"><center><b>QTM 151 Group Project: <br> Exploration of Countries' Performance as Drivers and Constructors in Formula One</b></center></font></h1>
 <p><font size="5"><font color="darkblue"></p>
 <center>Author: Jiuru Lyu, Jessie Ni, Sophia Xiao, Tiffany Yang (Group 17)</center>
+
 </div>
 </div>
 </div>
@@ -14611,7 +14631,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Table-of-Contents"><font face="times" color="darkblue">Table of Contents</font><a class="anchor-link" href="#Table-of-Contents">&#182;</a></h2><p><font face="times" size="4"></p>
+<h2 id="Table-of-Contents"><font face="times" color="darkblue">Table of Contents</font><a class="anchor-link" href="#Table-of-Contents">&#182;</a></h2><font face="times" size="4">
 <ul>
 <li><a href="#table-of-contents">Table of Contents</a></li>
 <li><a href="#i-introduction">I. Introduction</a></li>
@@ -14653,10 +14673,10 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><font face="times"></p>
+<font face="times">
 <p>Formula One has been one of the most popular and fastest car racing competitions in the world since 1950. It differs from other car racing competitions by using specifically open-wheel, single-seater, fossil-fueled cars.</p>
 <p>A typical Formula One season consists of a series of races, known as Grands Prix, that takes place in various countries and continents around the world on either purpose-built circuits or closed public roads. Two championships are chosen each year, one for the driver (who can drive fastest) and one for the constructor (who makes the best cars). Famous drivers risk their lives on the tracks to compete for the honor. Constructors teams, usually consisting of hundreds of people behind the scene, keep pushing existent technology to the extreme and creating a symphony of aerodynamics.</p>
-<p>F1 is a very expensive and deadly sport, as the construction cost of one single car (including designing, building, maintaining, and transporting) can cost up to \$265,000,000 in a year. Only in 2019 did F1 start to set a cost cap of \$175 million. However, when Covid swept over the world in 2020, a lot of teams fell into a catastrophic financial situation. F1 consequently dropped the cost cap to \$145 million.</p>
+<p>F1 is a very expensive and deadly sport, as the construction cost of one single car (including designing, building, maintaining, and transporting) can cost up to $265,000,000 in a year. Only in 2019 did F1 start to set a cost cap of $175 million. However, when Covid swept over the world in 2020, a lot of teams fell into a catastrophic financial situation. F1 consequently dropped the cost cap to $145 million.</p>
 <p>For a lot of constructors, racing in Formula is a strategy for not only breaking the edge-on car designs but also for marketing purposes(Ferrari said it in their 2020 annual report). Not only that, the technology applied to F1 cars sometimes will be further developed and used in commercial everyday car models as well.</p>
 <p>Our research project investigates a list of top constructors and drivers in the 21st century. We will extract information necessary from 6 big data sets, and try to see whether the top drivers and top constructors.</p>
 
@@ -14670,7 +14690,8 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<center><img src="figures/F1_super.jpeg" width = "1024" height = "576" alt="Formula One Animation" align=center/></center>
+<center><img src="https://github.com/JrLyu/QTM151/blob/main/final_project/figures/F1_super.jpeg?raw=true" width = "1024" height = "576" alt="Formula One Animation" align=center/></center>
+
 </div>
 </div>
 </div>
@@ -14732,11 +14753,11 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Import data sets</span>
 
-<span class="n">drivers</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data_raw/drivers.csv"</span><span class="p">)</span>
-<span class="n">driver_standings</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data_raw/driver_standings.csv"</span><span class="p">)</span>
-<span class="n">races</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data_raw/races.csv"</span><span class="p">)</span>
-<span class="n">constructors</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data_raw/constructors.csv"</span><span class="p">)</span>
-<span class="n">constructor_standings</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data_raw/constructor_standings.csv"</span><span class="p">)</span>
+<span class="n">drivers</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data_raw/drivers.csv&quot;</span><span class="p">)</span>
+<span class="n">driver_standings</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data_raw/driver_standings.csv&quot;</span><span class="p">)</span>
+<span class="n">races</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data_raw/races.csv&quot;</span><span class="p">)</span>
+<span class="n">constructors</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data_raw/constructors.csv&quot;</span><span class="p">)</span>
+<span class="n">constructor_standings</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data_raw/constructor_standings.csv&quot;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14751,7 +14772,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><font face="times"></p>
+<font face="times">
 <p>We used the <code>drivers</code>, <code>driver_standings</code>, <code>races</code>, <code>constructors</code>, and <code>constructor_standings</code> tables from the Formula 1 dataset.</p>
 <p>The <code>drivers</code> file contains information on the drivers competing in Formula One races. Each row contains information on a driver, including the driverId, their full name, their 3-letter code, their number, nationality, and a URL to the driver’s Wikipedia page. This table has 857 observations.</p>
 <p>The <code>driver_standings</code> file contains information on the drivers' standings in Formula One races. Each row has data on a driver’s standing per race. The data includes points (the number of points the driver earned in the specific race), wins (either 1 or 0, representing whether or not the driver won the race), and position (the driver’s position in the race).  This table has 33902 observations.</p>
@@ -14772,7 +14793,7 @@ There are 12941 observations in this table.</p>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Basic statistics of the data sets</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\</span>
 <span class="s2">        drivers row number: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">drivers</span><span class="p">)</span><span class="si">}</span><span class="se">\n\</span>
 <span class="s2">        drivers column numbers: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">drivers</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="si">}</span><span class="se">\n\</span>
 <span class="s2">        drivers column names: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">drivers</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="si">}</span><span class="se">\n\</span>
@@ -14787,7 +14808,7 @@ There are 12941 observations in this table.</p>
 <span class="s2">        constructors column names: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">constructors</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="si">}</span><span class="se">\n\</span>
 <span class="s2">        constructor_standings row number: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">constructor_standings</span><span class="p">)</span><span class="si">}</span><span class="se">\n\</span>
 <span class="s2">        constructor_standings column numbers: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">constructor_standings</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="si">}</span><span class="se">\n\</span>
-<span class="s2">        constructor_standings column names: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">constructor_standings</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+<span class="s2">        constructor_standings column names: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">constructor_standings</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14801,9 +14822,7 @@ There are 12941 observations in this table.</p>
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
 <div class="jp-OutputArea-child">
-
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -14840,8 +14859,8 @@ There are 12941 observations in this table.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><font face="times">
-Here we provide the information on those tables from the code book. Those columns with a red box are those involved in our further analysis.<br></p>
+<font face="times">
+Here we provide the information on those tables from the code book. Those columns with a red box are those involved in our further analysis.<br>
 
 </div>
 </div>
@@ -14853,7 +14872,8 @@ Here we provide the information on those tables from the code book. Those column
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<center><img src="figures/drivers.png" width = "1000" height = "230" alt="drivers table" align=center/></center>
+<center><img src="https://github.com/JrLyu/QTM151/blob/main/final_project/figures/drivers.png?raw=true" width = "1000" height = "230" alt="drivers table" align=center/></center>
+
 </div>
 </div>
 </div>
@@ -14864,7 +14884,8 @@ Here we provide the information on those tables from the code book. Those column
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<center><img src="figures/driver_standings.png" width = "1000" height = "200" alt="driver_standings table" align=center/></center>
+<center><img src="https://github.com/JrLyu/QTM151/blob/main/final_project/figures/driver_standings.png?raw=true" width = "1000" height = "200" alt="driver_standings table" align=center/></center>
+
 </div>
 </div>
 </div>
@@ -14875,7 +14896,8 @@ Here we provide the information on those tables from the code book. Those column
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<center><img src="figures/races.png" width = "1000" height = "400" alt="races table" align=center/></center>
+<center><img src="https://github.com/JrLyu/QTM151/blob/main/final_project/figures/races.png?raw=true" width = "1000" height = "400" alt="races table" align=center/></center>
+
 </div>
 </div>
 </div>
@@ -14886,7 +14908,8 @@ Here we provide the information on those tables from the code book. Those column
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<center><img src="figures/constructors.png" width = "1000" height = "200" alt="constructor table" align=center/></center>
+<center><img src="https://github.com/JrLyu/QTM151/blob/main/final_project/figures/constructors.png?raw=true" width = "1000" height = "200" alt="constructor table" align=center/></center>
+
 </div>
 </div>
 </div>
@@ -14897,7 +14920,8 @@ Here we provide the information on those tables from the code book. Those column
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<center><img src="figures/constructor_standings.png" width = "1000" height = "200" alt="constructor_standings table" align=center/></center>
+<center><img src="https://github.com/JrLyu/QTM151/blob/main/final_project/figures/constructor_standings.png?raw=true" width = "1000" height = "200" alt="constructor_standings table" align=center/></center>
+
 </div>
 </div>
 </div>
@@ -14920,7 +14944,7 @@ Here we provide the information on those tables from the code book. Those column
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><font face="times"></p>
+<font face="times">
 <p>To conduct the analysis on where the top drivers come from, we first merged the data set <code>drivers</code> with <code>driver_standings</code> on the primary key of <code>driverId</code>, and this joined data set is named <code>driver_join</code>. Then, we subset <code>driver_join</code> by selecting data from the 21st century, with the subset named <code>driver_join_21st</code>.</p>
 
 </div>
@@ -14936,10 +14960,10 @@ Here we provide the information on those tables from the code book. Those column
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Join drivers and driver standings</span>
 
-<span class="n">driver_join</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">drivers</span><span class="p">[[</span><span class="s2">"driverId"</span><span class="p">,</span> <span class="s2">"forename"</span><span class="p">,</span> <span class="s2">"surname"</span><span class="p">,</span> <span class="s2">"nationality"</span><span class="p">]],</span>
-                       <span class="n">driver_standings</span><span class="p">[[</span><span class="s2">"raceId"</span><span class="p">,</span> <span class="s2">"driverId"</span><span class="p">,</span> <span class="s2">"points"</span><span class="p">,</span> <span class="s2">"wins"</span><span class="p">]],</span>
-                       <span class="n">how</span> <span class="o">=</span> <span class="s2">"left"</span><span class="p">,</span>
-                       <span class="n">on</span> <span class="o">=</span> <span class="s2">"driverId"</span><span class="p">)</span>
+<span class="n">driver_join</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">drivers</span><span class="p">[[</span><span class="s2">&quot;driverId&quot;</span><span class="p">,</span> <span class="s2">&quot;forename&quot;</span><span class="p">,</span> <span class="s2">&quot;surname&quot;</span><span class="p">,</span> <span class="s2">&quot;nationality&quot;</span><span class="p">]],</span>
+                       <span class="n">driver_standings</span><span class="p">[[</span><span class="s2">&quot;raceId&quot;</span><span class="p">,</span> <span class="s2">&quot;driverId&quot;</span><span class="p">,</span> <span class="s2">&quot;points&quot;</span><span class="p">,</span> <span class="s2">&quot;wins&quot;</span><span class="p">]],</span>
+                       <span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span><span class="p">,</span>
+                       <span class="n">on</span> <span class="o">=</span> <span class="s2">&quot;driverId&quot;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14958,9 +14982,9 @@ Here we provide the information on those tables from the code book. Those column
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Subsetting data set by selecting data only in the 21th century.</span>
 
 <span class="n">driver_join_21st</span> <span class="o">=</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">driver_join</span><span class="p">,</span>
-                             <span class="n">races</span><span class="p">[[</span><span class="s2">"raceId"</span><span class="p">,</span> <span class="s2">"year"</span><span class="p">]],</span>
-                             <span class="n">how</span> <span class="o">=</span> <span class="s2">"left"</span><span class="p">,</span>
-                             <span class="n">on</span> <span class="o">=</span> <span class="s2">"raceId"</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">'year &gt;= 2000'</span><span class="p">))</span> <span class="c1"># select data from 21st century</span>
+                             <span class="n">races</span><span class="p">[[</span><span class="s2">&quot;raceId&quot;</span><span class="p">,</span> <span class="s2">&quot;year&quot;</span><span class="p">]],</span>
+                             <span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span><span class="p">,</span>
+                             <span class="n">on</span> <span class="o">=</span> <span class="s2">&quot;raceId&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;year &gt;= 2000&#39;</span><span class="p">))</span> <span class="c1"># select data from 21st century</span>
 </pre></div>
 
      </div>
@@ -14975,7 +14999,7 @@ Here we provide the information on those tables from the code book. Those column
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><font face="times"></p>
+<font face="times">
 <p>Similarly, we merge the data of constructors using the same procedure. We first merged the data set <code>constructors</code> with <code>constructor_standings</code> on the primary key of <code>constructorId</code>, and this joined data set is named <code>constructor_join</code>. Then, we subset <code>constructor_join</code> by selecting data from the 21st century, with the subset named <code>constructor_join_21st</code>.</p>
 
 </div>
@@ -14991,10 +15015,10 @@ Here we provide the information on those tables from the code book. Those column
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Join constructors and constructor standings</span>
 
-<span class="n">constructor_join</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">constructors</span><span class="p">[[</span><span class="s2">"constructorId"</span><span class="p">,</span> <span class="s2">"nationality"</span><span class="p">]],</span>
-                            <span class="n">constructor_standings</span><span class="p">[[</span><span class="s2">"raceId"</span><span class="p">,</span> <span class="s2">"constructorId"</span><span class="p">,</span> <span class="s2">"points"</span><span class="p">,</span> <span class="s2">"wins"</span><span class="p">]],</span>
-                            <span class="n">how</span> <span class="o">=</span> <span class="s2">"left"</span><span class="p">,</span>
-                            <span class="n">on</span> <span class="o">=</span> <span class="s2">"constructorId"</span><span class="p">)</span>
+<span class="n">constructor_join</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">constructors</span><span class="p">[[</span><span class="s2">&quot;constructorId&quot;</span><span class="p">,</span> <span class="s2">&quot;nationality&quot;</span><span class="p">]],</span>
+                            <span class="n">constructor_standings</span><span class="p">[[</span><span class="s2">&quot;raceId&quot;</span><span class="p">,</span> <span class="s2">&quot;constructorId&quot;</span><span class="p">,</span> <span class="s2">&quot;points&quot;</span><span class="p">,</span> <span class="s2">&quot;wins&quot;</span><span class="p">]],</span>
+                            <span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span><span class="p">,</span>
+                            <span class="n">on</span> <span class="o">=</span> <span class="s2">&quot;constructorId&quot;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15013,9 +15037,9 @@ Here we provide the information on those tables from the code book. Those column
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Subsetting data set by selecting data only in the 21th century.</span>
 
 <span class="n">constructor_join_21st</span> <span class="o">=</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">constructor_join</span><span class="p">,</span>
-                                  <span class="n">races</span><span class="p">[[</span><span class="s2">"raceId"</span><span class="p">,</span> <span class="s2">"year"</span><span class="p">]],</span>
-                                  <span class="n">how</span> <span class="o">=</span> <span class="s2">"left"</span><span class="p">,</span>
-                                  <span class="n">on</span> <span class="o">=</span> <span class="s2">"raceId"</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">'year &gt;= 2000'</span><span class="p">))</span> <span class="c1"># select data from 21st century</span>
+                                  <span class="n">races</span><span class="p">[[</span><span class="s2">&quot;raceId&quot;</span><span class="p">,</span> <span class="s2">&quot;year&quot;</span><span class="p">]],</span>
+                                  <span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span><span class="p">,</span>
+                                  <span class="n">on</span> <span class="o">=</span> <span class="s2">&quot;raceId&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;year &gt;= 2000&#39;</span><span class="p">))</span> <span class="c1"># select data from 21st century</span>
 </pre></div>
 
      </div>
@@ -15030,7 +15054,7 @@ Here we provide the information on those tables from the code book. Those column
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><font face="times"></p>
+<font face="times">
 <p>To further clean our data, we aggregate the data set to compute the sums of wins of drivers by nationality, with 0 or NA values omitted. This final data set is called <code>driver_nationality</code>.</p>
 
 </div>
@@ -15048,10 +15072,10 @@ Here we provide the information on those tables from the code book. Those column
 
 <span class="c1"># compute sum_wins by nationality</span>
 
-<span class="n">driver_nationality</span> <span class="o">=</span> <span class="p">(</span><span class="n">driver_join_21st</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"nationality"</span><span class="p">)</span>
-                                      <span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">sum_wins_drivers</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"wins"</span><span class="p">,</span> <span class="s2">"sum"</span><span class="p">))</span>
-                                      <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">"sum_wins_drivers != 0"</span><span class="p">)</span> <span class="c1"># omit 0 values</span>
-                                      <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">"sum_wins_drivers"</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">driver_nationality</span> <span class="o">=</span> <span class="p">(</span><span class="n">driver_join_21st</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;nationality&quot;</span><span class="p">)</span>
+                                      <span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">sum_wins_drivers</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;wins&quot;</span><span class="p">,</span> <span class="s2">&quot;sum&quot;</span><span class="p">))</span>
+                                      <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;sum_wins_drivers != 0&quot;</span><span class="p">)</span> <span class="c1"># omit 0 values</span>
+                                      <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;sum_wins_drivers&quot;</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
                                       <span class="o">.</span><span class="n">reset_index</span><span class="p">())</span>
 </pre></div>
 
@@ -15067,7 +15091,7 @@ Here we provide the information on those tables from the code book. Those column
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><font face="times"></p>
+<font face="times">
 <p>Similarly, we aggregate the data set to compute the sums of wins of constructors by nationality, with 0 or NA values omitted. This final data set is called <code>constructor_nationality</code>.</p>
 
 </div>
@@ -15083,10 +15107,10 @@ Here we provide the information on those tables from the code book. Those column
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Aggregating the sum of wins of constructors by nationality.</span>
 
-<span class="n">constructor_nationality</span> <span class="o">=</span> <span class="p">(</span><span class="n">constructor_join_21st</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"nationality"</span><span class="p">)</span>
-                                                <span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">sum_wins_constructor</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"wins"</span><span class="p">,</span> <span class="s2">"sum"</span><span class="p">))</span>
-                                                <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">"sum_wins_constructor != 0"</span><span class="p">)</span> <span class="c1"># omiit 0 numbers</span>
-                                                <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">"sum_wins_constructor"</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">constructor_nationality</span> <span class="o">=</span> <span class="p">(</span><span class="n">constructor_join_21st</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;nationality&quot;</span><span class="p">)</span>
+                                                <span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">sum_wins_constructor</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;wins&quot;</span><span class="p">,</span> <span class="s2">&quot;sum&quot;</span><span class="p">))</span>
+                                                <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;sum_wins_constructor != 0&quot;</span><span class="p">)</span> <span class="c1"># omiit 0 numbers</span>
+                                                <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;sum_wins_constructor&quot;</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
                                                 <span class="o">.</span><span class="n">reset_index</span><span class="p">())</span>
 </pre></div>
 
@@ -15114,7 +15138,7 @@ Here we provide the information on those tables from the code book. Those column
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><font face="times"></p>
+<font face="times">
 <p>Dealing with <code>driver_nationality</code>, we will primarily use the <code>nationality</code> column and the <code>sum_wins_drivers</code>. Here are some descriptive statistics for those columns.</p>
 
 </div>
@@ -15130,7 +15154,7 @@ Here we provide the information on those tables from the code book. Those column
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Summary of nationality of drivers</span>
 
-<span class="n">driver_nationality</span><span class="p">[</span><span class="s2">"nationality"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">driver_nationality</span><span class="p">[</span><span class="s2">&quot;nationality&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 </pre></div>
 
      </div>
@@ -15144,9 +15168,7 @@ Here we provide the information on those tables from the code book. Those column
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
 
@@ -15187,7 +15209,7 @@ Name: nationality, dtype: int64</pre>
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Summary of sum of wins by nationality of drivers</span>
 
-<span class="n">driver_nationality</span><span class="p">[</span><span class="s2">"sum_wins_drivers"</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<span class="n">driver_nationality</span><span class="p">[</span><span class="s2">&quot;sum_wins_drivers&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 
      </div>
@@ -15201,9 +15223,7 @@ Name: nationality, dtype: int64</pre>
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
 
@@ -15235,7 +15255,7 @@ Name: sum_wins_drivers, dtype: float64</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><font face="times"></p>
+<font face="times">
 <p>In the data set <code>constructor_nationality</code>, we will also primarily use the <code>nationality</code> column and the <code>sum_wins_drivers</code>. Here are some descriptive statistics for those columns.</p>
 
 </div>
@@ -15251,7 +15271,7 @@ Name: sum_wins_drivers, dtype: float64</pre>
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Summary of nationality of drivers</span>
 
-<span class="n">constructor_nationality</span><span class="p">[</span><span class="s2">"nationality"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">constructor_nationality</span><span class="p">[</span><span class="s2">&quot;nationality&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 </pre></div>
 
      </div>
@@ -15265,9 +15285,7 @@ Name: sum_wins_drivers, dtype: float64</pre>
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
 
@@ -15299,7 +15317,7 @@ Name: nationality, dtype: int64</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">constructor_nationality</span><span class="p">[</span><span class="s2">"sum_wins_constructor"</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">constructor_nationality</span><span class="p">[</span><span class="s2">&quot;sum_wins_constructor&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 
      </div>
@@ -15313,9 +15331,7 @@ Name: nationality, dtype: int64</pre>
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
 
@@ -15371,7 +15387,7 @@ Name: sum_wins_constructor, dtype: float64</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><font face="times"></p>
+<font face="times">
 <p>Firstly, we will create a plot to compare the drivers' sum of wins and the constructors' sum of wins by <code>nationality</code>.</p>
 
 </div>
@@ -15386,14 +15402,14 @@ Name: sum_wins_constructor, dtype: float64</pre>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">"Comparison Between Sum of Wins of Drivers and Constructors by Nationality"</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Comparison Between Sum of Wins of Drivers and Constructors by Nationality&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">bottom</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">top</span> <span class="o">=</span> <span class="mf">0.85</span><span class="p">)</span>
 
-<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Sum of Wins by Nationality of Drivers"</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">data</span> <span class="o">=</span> <span class="n">driver_nationality</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">"nationality"</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">"sum_wins_drivers"</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Sum of Wins by Nationality of Drivers&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">data</span> <span class="o">=</span> <span class="n">driver_nationality</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;nationality&quot;</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;sum_wins_drivers&quot;</span><span class="p">)</span>
 
-<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Sum of Wins by Nationality of Constructors"</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">data</span> <span class="o">=</span> <span class="n">constructor_nationality</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">"nationality"</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">"sum_wins_constructor"</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Sum of Wins by Nationality of Constructors&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">data</span> <span class="o">=</span> <span class="n">constructor_nationality</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;nationality&quot;</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;sum_wins_constructor&quot;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15407,9 +15423,7 @@ Name: sum_wins_constructor, dtype: float64</pre>
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
 
@@ -15421,9 +15435,7 @@ Name: sum_wins_constructor, dtype: float64</pre>
 </div>
 
 </div>
-
 <div class="jp-OutputArea-child">
-
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -15450,7 +15462,7 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><font face="times"></p>
+<font face="times">
 <p><strong>Comments</strong>: From the comparison, we can observe that German is at the top of the sum of wins of both drivers and constructors. Italians are better constructors than drivers, whereas the British seem to be better drivers than constructors.</p>
 
 </div>
@@ -15475,7 +15487,7 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><font face="times"></p>
+<font face="times">
 <p>To better understand the geographical distribution of the sum of wins of drivers and constructors, we decide to draw a map to present the sum of wins by nationality.</p>
 <p>Firstly, we use dictionaries to convert nationality to countries' names.</p>
 
@@ -15491,20 +15503,20 @@ class="
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Convert nationality to nation, so that we can plot the data onto a map</span>
-<span class="n">driver_nationality_to_nation</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"British"</span><span class="p">:</span> <span class="s2">"United Kingdom"</span><span class="p">,</span>
-                                <span class="s2">"German"</span> <span class="p">:</span> <span class="s2">"Germany"</span><span class="p">,</span>
-                                <span class="s2">"Brazilian"</span><span class="p">:</span> <span class="s2">"Brazil"</span><span class="p">,</span>
-                                <span class="s2">"French"</span><span class="p">:</span> <span class="s2">"France"</span><span class="p">,</span>
-                                <span class="s2">"Finnish"</span> <span class="p">:</span> <span class="s2">"Finland"</span><span class="p">,</span>
-                                <span class="s2">"Dutch"</span> <span class="p">:</span> <span class="s2">"Denmark"</span><span class="p">,</span>
-                                <span class="s2">"Spanish"</span><span class="p">:</span> <span class="s2">"Spain"</span><span class="p">,</span>
-                                <span class="s2">"Australian"</span><span class="p">:</span> <span class="s2">"Australia"</span><span class="p">,</span>
-                                <span class="s2">"Italian"</span> <span class="p">:</span> <span class="s2">"Italy"</span><span class="p">,</span>
-                                <span class="s2">"Monegasque"</span> <span class="p">:</span> <span class="s2">"Monaco"</span><span class="p">,</span>
-                                <span class="s2">"Mexican"</span> <span class="p">:</span> <span class="s2">"Mexico"</span><span class="p">,</span>
-                                <span class="s2">"Colombian"</span> <span class="p">:</span> <span class="s2">"Colombia"</span><span class="p">,</span>
-                                <span class="s2">"Venezuelan"</span> <span class="p">:</span> <span class="s2">"Venezuela"</span><span class="p">,</span>
-                                <span class="s2">"Polish"</span> <span class="p">:</span> <span class="s2">"Poland"</span><span class="p">}</span>
+<span class="n">driver_nationality_to_nation</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;British&quot;</span><span class="p">:</span> <span class="s2">&quot;United Kingdom&quot;</span><span class="p">,</span>
+                                <span class="s2">&quot;German&quot;</span> <span class="p">:</span> <span class="s2">&quot;Germany&quot;</span><span class="p">,</span>
+                                <span class="s2">&quot;Brazilian&quot;</span><span class="p">:</span> <span class="s2">&quot;Brazil&quot;</span><span class="p">,</span>
+                                <span class="s2">&quot;French&quot;</span><span class="p">:</span> <span class="s2">&quot;France&quot;</span><span class="p">,</span>
+                                <span class="s2">&quot;Finnish&quot;</span> <span class="p">:</span> <span class="s2">&quot;Finland&quot;</span><span class="p">,</span>
+                                <span class="s2">&quot;Dutch&quot;</span> <span class="p">:</span> <span class="s2">&quot;Denmark&quot;</span><span class="p">,</span>
+                                <span class="s2">&quot;Spanish&quot;</span><span class="p">:</span> <span class="s2">&quot;Spain&quot;</span><span class="p">,</span>
+                                <span class="s2">&quot;Australian&quot;</span><span class="p">:</span> <span class="s2">&quot;Australia&quot;</span><span class="p">,</span>
+                                <span class="s2">&quot;Italian&quot;</span> <span class="p">:</span> <span class="s2">&quot;Italy&quot;</span><span class="p">,</span>
+                                <span class="s2">&quot;Monegasque&quot;</span> <span class="p">:</span> <span class="s2">&quot;Monaco&quot;</span><span class="p">,</span>
+                                <span class="s2">&quot;Mexican&quot;</span> <span class="p">:</span> <span class="s2">&quot;Mexico&quot;</span><span class="p">,</span>
+                                <span class="s2">&quot;Colombian&quot;</span> <span class="p">:</span> <span class="s2">&quot;Colombia&quot;</span><span class="p">,</span>
+                                <span class="s2">&quot;Venezuelan&quot;</span> <span class="p">:</span> <span class="s2">&quot;Venezuela&quot;</span><span class="p">,</span>
+                                <span class="s2">&quot;Polish&quot;</span> <span class="p">:</span> <span class="s2">&quot;Poland&quot;</span><span class="p">}</span>
 
 <span class="n">driver_nation</span> <span class="o">=</span> <span class="n">driver_nationality</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">driver_nationality_to_nation</span><span class="p">)</span>
 </pre></div>
@@ -15521,7 +15533,7 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><font face="times"></p>
+<font face="times">
 <p>Then, we merge the <code>driver_nation</code> with the <code>world</code> data set obtained from the <code>geopandas</code> package. Through this method, we get the geographical information (such as longitude and latitude) of each country.</p>
 
 </div>
@@ -15536,14 +15548,14 @@ class="
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Obtain geographical data from geopandas</span>
-<span class="n">world</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">gpd</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">get_path</span><span class="p">(</span><span class="s2">"naturalearth_lowres"</span><span class="p">))</span>
+<span class="n">world</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">gpd</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">get_path</span><span class="p">(</span><span class="s2">&quot;naturalearth_lowres&quot;</span><span class="p">))</span>
 
 <span class="c1"># Merge with the driver_nation data</span>
 <span class="n">driver_nation_gpd</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">world</span><span class="p">,</span> 
                              <span class="n">driver_nation</span><span class="p">,</span> 
-                             <span class="n">left_on</span> <span class="o">=</span> <span class="s2">"name"</span><span class="p">,</span> 
-                             <span class="n">right_on</span> <span class="o">=</span> <span class="s2">"nationality"</span><span class="p">,</span> 
-                             <span class="n">how</span> <span class="o">=</span> <span class="s2">"inner"</span><span class="p">)</span> <span class="c1"># use inner join to omit unnecessary data</span>
+                             <span class="n">left_on</span> <span class="o">=</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span> 
+                             <span class="n">right_on</span> <span class="o">=</span> <span class="s2">&quot;nationality&quot;</span><span class="p">,</span> 
+                             <span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;inner&quot;</span><span class="p">)</span> <span class="c1"># use inner join to omit unnecessary data</span>
 </pre></div>
 
      </div>
@@ -15558,7 +15570,7 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><font face="times"></p>
+<font face="times">
 <p>Then, we use the <code>Map</code> object from the <code>folium</code> package to draw the map.</p>
 
 </div>
@@ -15577,31 +15589,31 @@ class="
 
 <span class="c1"># Add color layers onto the map</span>
 <span class="n">folium</span><span class="o">.</span><span class="n">Choropleth</span><span class="p">(</span><span class="n">geo_data</span> <span class="o">=</span> <span class="n">driver_nation_gpd</span><span class="p">,</span>
-                  <span class="n">name</span> <span class="o">=</span> <span class="s2">"choropleth"</span><span class="p">,</span>
+                  <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;choropleth&quot;</span><span class="p">,</span>
                   <span class="n">data</span> <span class="o">=</span> <span class="n">driver_nation_gpd</span><span class="p">,</span>
-                  <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"nationality"</span><span class="p">,</span> <span class="s2">"sum_wins_drivers"</span><span class="p">],</span>
-                  <span class="n">key_on</span> <span class="o">=</span> <span class="s2">"feature.properties.name"</span><span class="p">,</span>
-                  <span class="n">fill_color</span> <span class="o">=</span> <span class="s2">"YlGn"</span><span class="p">,</span>
+                  <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;nationality&quot;</span><span class="p">,</span> <span class="s2">&quot;sum_wins_drivers&quot;</span><span class="p">],</span>
+                  <span class="n">key_on</span> <span class="o">=</span> <span class="s2">&quot;feature.properties.name&quot;</span><span class="p">,</span>
+                  <span class="n">fill_color</span> <span class="o">=</span> <span class="s2">&quot;YlGn&quot;</span><span class="p">,</span>
                   <span class="n">fill_opacity</span> <span class="o">=</span> <span class="mf">0.7</span><span class="p">,</span>
                   <span class="n">line_opacity</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span>
-                  <span class="n">legend_name</span> <span class="o">=</span> <span class="s2">"sum_wins"</span><span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">driver_nation_map</span><span class="p">)</span>
+                  <span class="n">legend_name</span> <span class="o">=</span> <span class="s2">&quot;sum_wins&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">driver_nation_map</span><span class="p">)</span>
 
 <span class="c1"># Add labels onto the map (so when clickling on the country, the data information will be present)</span>
 <span class="n">folium</span><span class="o">.</span><span class="n">GeoJson</span><span class="p">(</span>
     <span class="n">driver_nation_gpd</span><span class="p">,</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="s2">"labels"</span><span class="p">,</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;labels&quot;</span><span class="p">,</span>
     <span class="n">style_function</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">"color"</span><span class="p">:</span> <span class="s2">"black"</span><span class="p">,</span>
-        <span class="s2">"weight"</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
-        <span class="s2">"fillOpacity"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+        <span class="s2">&quot;fillOpacity&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
     <span class="p">},</span>
-    <span class="n">tooltip</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">GeoJsonTooltip</span><span class="p">(</span><span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"sum_wins_drivers"</span><span class="p">],</span> <span class="n">aliases</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Sum of Wins in 21th Century"</span><span class="p">]),</span>
+    <span class="n">tooltip</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">GeoJsonTooltip</span><span class="p">(</span><span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;sum_wins_drivers&quot;</span><span class="p">],</span> <span class="n">aliases</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Sum of Wins in 21th Century&quot;</span><span class="p">]),</span>
     <span class="n">highlight_function</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">"fillColor"</span><span class="p">:</span> <span class="s2">"white"</span><span class="p">,</span>
-        <span class="s2">"color"</span><span class="p">:</span> <span class="s2">"black"</span><span class="p">,</span>
-        <span class="s2">"weight"</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">,</span>
-        <span class="s2">"dashArray"</span><span class="p">:</span> <span class="s2">"5, 5"</span><span class="p">,</span>
-        <span class="s2">"fillOpacity"</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span>
+        <span class="s2">&quot;fillColor&quot;</span><span class="p">:</span> <span class="s2">&quot;white&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">,</span>
+        <span class="s2">&quot;dashArray&quot;</span><span class="p">:</span> <span class="s2">&quot;5, 5&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;fillOpacity&quot;</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span>
     <span class="p">},</span>
     <span class="n">show</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">driver_nation_map</span><span class="p">)</span>
@@ -15622,9 +15634,7 @@ class="
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
 
@@ -15900,7 +15910,7 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><font face="times"></p>
+<font face="times">
 <p><strong>Comment</strong>: As we can see from the map, the major top drivers are from European countries. Though some top drivers are also from South America, the sums of their wins are relatively lower than those of European drivers.</p>
 
 </div>
@@ -15925,7 +15935,7 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><font face="times"></p>
+<font face="times">
 <p>We then used the same procedure to obtain a map illustrating the constructors' distribution on the map by the sum of wins.</p>
 
 </div>
@@ -15941,21 +15951,21 @@ class="
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Convert nationality to nation, so that we can plot the data onto a map</span>
 <span class="c1"># Then merge the nation data with the geographical data</span>
-<span class="n">constructor_nationality_to_nation</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"British"</span><span class="p">:</span> <span class="s2">"United Kingdom"</span><span class="p">,</span>
-                                     <span class="s2">"German"</span> <span class="p">:</span> <span class="s2">"Germany"</span><span class="p">,</span>
-                                     <span class="s2">"French"</span><span class="p">:</span> <span class="s2">"France"</span><span class="p">,</span>
-                                     <span class="s2">"Japanese"</span> <span class="p">:</span> <span class="s2">"Japan"</span><span class="p">,</span>
-                                     <span class="s2">"Italian"</span> <span class="p">:</span> <span class="s2">"Italy"</span><span class="p">,</span>
-                                     <span class="s2">"Austrian"</span> <span class="p">:</span> <span class="s2">"Austria"</span><span class="p">,</span>
-                                     <span class="s2">"Irish"</span> <span class="p">:</span> <span class="s2">"Ireland"</span><span class="p">}</span>
+<span class="n">constructor_nationality_to_nation</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;British&quot;</span><span class="p">:</span> <span class="s2">&quot;United Kingdom&quot;</span><span class="p">,</span>
+                                     <span class="s2">&quot;German&quot;</span> <span class="p">:</span> <span class="s2">&quot;Germany&quot;</span><span class="p">,</span>
+                                     <span class="s2">&quot;French&quot;</span><span class="p">:</span> <span class="s2">&quot;France&quot;</span><span class="p">,</span>
+                                     <span class="s2">&quot;Japanese&quot;</span> <span class="p">:</span> <span class="s2">&quot;Japan&quot;</span><span class="p">,</span>
+                                     <span class="s2">&quot;Italian&quot;</span> <span class="p">:</span> <span class="s2">&quot;Italy&quot;</span><span class="p">,</span>
+                                     <span class="s2">&quot;Austrian&quot;</span> <span class="p">:</span> <span class="s2">&quot;Austria&quot;</span><span class="p">,</span>
+                                     <span class="s2">&quot;Irish&quot;</span> <span class="p">:</span> <span class="s2">&quot;Ireland&quot;</span><span class="p">}</span>
 
 <span class="n">constructor_nation</span> <span class="o">=</span> <span class="n">constructor_nationality</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">constructor_nationality_to_nation</span><span class="p">)</span>
 
 <span class="n">constructor_nation_gpd</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">world</span><span class="p">,</span> 
                                   <span class="n">constructor_nation</span><span class="p">,</span> 
-                                  <span class="n">left_on</span> <span class="o">=</span> <span class="s2">"name"</span><span class="p">,</span> 
-                                  <span class="n">right_on</span> <span class="o">=</span> <span class="s2">"nationality"</span><span class="p">,</span> 
-                                  <span class="n">how</span> <span class="o">=</span> <span class="s2">"inner"</span><span class="p">)</span>
+                                  <span class="n">left_on</span> <span class="o">=</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span> 
+                                  <span class="n">right_on</span> <span class="o">=</span> <span class="s2">&quot;nationality&quot;</span><span class="p">,</span> 
+                                  <span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;inner&quot;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15975,30 +15985,30 @@ class="
 <span class="n">constructor_nation_map</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">zoom_start</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
 
 <span class="n">folium</span><span class="o">.</span><span class="n">Choropleth</span><span class="p">(</span><span class="n">geo_data</span> <span class="o">=</span> <span class="n">constructor_nation_gpd</span><span class="p">,</span>
-                  <span class="n">name</span> <span class="o">=</span> <span class="s2">"choropleth"</span><span class="p">,</span>
+                  <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;choropleth&quot;</span><span class="p">,</span>
                   <span class="n">data</span> <span class="o">=</span> <span class="n">constructor_nation_gpd</span><span class="p">,</span>
-                  <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"nationality"</span><span class="p">,</span> <span class="s2">"sum_wins_constructor"</span><span class="p">],</span>
-                  <span class="n">key_on</span> <span class="o">=</span> <span class="s2">"feature.properties.name"</span><span class="p">,</span>
-                  <span class="n">fill_color</span> <span class="o">=</span> <span class="s2">"YlGn"</span><span class="p">,</span>
+                  <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;nationality&quot;</span><span class="p">,</span> <span class="s2">&quot;sum_wins_constructor&quot;</span><span class="p">],</span>
+                  <span class="n">key_on</span> <span class="o">=</span> <span class="s2">&quot;feature.properties.name&quot;</span><span class="p">,</span>
+                  <span class="n">fill_color</span> <span class="o">=</span> <span class="s2">&quot;YlGn&quot;</span><span class="p">,</span>
                   <span class="n">fill_opacity</span> <span class="o">=</span> <span class="mf">0.7</span><span class="p">,</span>
                   <span class="n">line_opacity</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span>
-                  <span class="n">legend_name</span> <span class="o">=</span> <span class="s2">"sum_wins"</span><span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">constructor_nation_map</span><span class="p">)</span>
+                  <span class="n">legend_name</span> <span class="o">=</span> <span class="s2">&quot;sum_wins&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">constructor_nation_map</span><span class="p">)</span>
 
 <span class="n">folium</span><span class="o">.</span><span class="n">GeoJson</span><span class="p">(</span>
     <span class="n">constructor_nation_gpd</span><span class="p">,</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="s2">"labels"</span><span class="p">,</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;labels&quot;</span><span class="p">,</span>
     <span class="n">style_function</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">"color"</span><span class="p">:</span> <span class="s2">"black"</span><span class="p">,</span>
-        <span class="s2">"weight"</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
-        <span class="s2">"fillOpacity"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+        <span class="s2">&quot;fillOpacity&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
     <span class="p">},</span>
-    <span class="n">tooltip</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">GeoJsonTooltip</span><span class="p">(</span><span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"sum_wins_constructor"</span><span class="p">],</span> <span class="n">aliases</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Sum of Wins in 21th Century"</span><span class="p">]),</span>
+    <span class="n">tooltip</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">GeoJsonTooltip</span><span class="p">(</span><span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;sum_wins_constructor&quot;</span><span class="p">],</span> <span class="n">aliases</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Sum of Wins in 21th Century&quot;</span><span class="p">]),</span>
     <span class="n">highlight_function</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">"fillColor"</span><span class="p">:</span> <span class="s2">"white"</span><span class="p">,</span>
-        <span class="s2">"color"</span><span class="p">:</span> <span class="s2">"black"</span><span class="p">,</span>
-        <span class="s2">"weight"</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">,</span>
-        <span class="s2">"dashArray"</span><span class="p">:</span> <span class="s2">"5, 5"</span><span class="p">,</span>
-        <span class="s2">"fillOpacity"</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span>
+        <span class="s2">&quot;fillColor&quot;</span><span class="p">:</span> <span class="s2">&quot;white&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">,</span>
+        <span class="s2">&quot;dashArray&quot;</span><span class="p">:</span> <span class="s2">&quot;5, 5&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;fillOpacity&quot;</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span>
     <span class="p">},</span>
     <span class="n">show</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">constructor_nation_map</span><span class="p">)</span>
@@ -16019,9 +16029,7 @@ class="
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
 
@@ -16301,7 +16309,7 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><font face="times"></p>
+<font face="times">
 <p><em>Note: The small shaded area in South America is an oversea territory of France.</em></p>
 
 </div>
@@ -16314,7 +16322,7 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><font face="times"></p>
+<font face="times">
 <p><strong>Comment</strong>: Again, as we can see from the map, the top constructors are still major from the European countries. Japan is the only top constructor that is from outside Europe.</p>
 
 </div>
@@ -16339,7 +16347,7 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><font face="times"></p>
+<font face="times">
 <p>The final project involved an analysis of the number of wins per driver and a summary of the countries with the highest number of wins from the year 2000 in the F1 competition. Our primary objective was to identify the countries that have been dominating the motor racing industry in recent years. To fulfill this goal, we merged the data set and applied subsetting criteria. We also aggregated the data to find the summed number of wins for each country for drivers and constructors, respectively. In terms of results, we first drew a line plot to represent the trends in their performance over time. We found that the top three countries with the highest number of wins of drivers since 2000 are Germany, Britain, and Dutch. On the other hand, the top three countries with the highest number of wins of constructors are Germany, Italy, and Australia. Meanwhile, we used two maps to represent the sum of wins of constructors and drivers by different countries. The two maps reveal that the top constructors and drivers mainly come from European countries, and South American countries are better drivers instead of constructors. Overall, this project deeply analyzes the relationship between the sum of wins and countries, which provides valuable insights into the trends in motor racing over the past two decades.</p>
 
 </div>
@@ -16363,7 +16371,7 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><font face="times"></p>
+<font face="times">
 <ul>
 <li>Figure 1. Formula One Logo, Wikimedia, <a href="https://commons.wikimedia.org/wiki/File:F1.svg">https://commons.wikimedia.org/wiki/File:F1.svg</a></li>
 <li>Figure 2. Formula One Competition, Sky Sports, <a href="https://www.skysports.com/f1/news/12433/12567851/formula-1-on-sky-sports-set-to-be-broadcast-in-high-dynamic-range-hdr-for-the-first-time-in-its-history">https://www.skysports.com/f1/news/12433/12567851/formula-1-on-sky-sports-set-to-be-broadcast-in-high-dynamic-range-hdr-for-the-first-time-in-its-history</a></li>
